@@ -17,24 +17,24 @@ public class ItemsController : ControllerBase
 
     // Get /items
     [HttpGet]
-    public IEnumerable<Item> GetItems()
+    public IEnumerable<ItemDto> GetItems()
     {
-        var items = repository.GetItems();
+        var items = repository.GetItems().Select(items => items.AsDto());
         return items;
     }
 
     // Get /items/{id}
     [HttpGet("{id}")]
-    public ActionResult<Item> GetItem(Guid id)
+    public ActionResult<ItemDto> GetItem(Guid id)
     {
-        var item = repository.GetItem(id);
+        var item = repository.GetItem(id).AsDto();
 
         if (item is null)
         {
             return NotFound();
         }
 
-        return item;
+        return item.AsDto;
     }
 }
 
