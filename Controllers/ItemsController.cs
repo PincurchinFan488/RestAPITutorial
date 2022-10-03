@@ -15,11 +15,26 @@ public class ItemsController : ControllerBase
         repository = new InMemItemsRepository();
     }
 
+    // Get /items
     [HttpGet]
     public IEnumerable<Item> GetItems()
     {
         var items = repository.GetItems();
         return items;
+    }
+
+    // Get /items/{id}
+    [HttpGet("{id}")]
+    public ActionResult<Item> GetItem(Guid id)
+    {
+        var item = repository.GetItem(id);
+
+        if (item is null)
+        {
+            return NotFound();
+        }
+
+        return item;
     }
 }
 
