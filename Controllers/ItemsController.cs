@@ -1,14 +1,18 @@
-namespace Catalog.Controllers
+using Catalog.Entities;
+using Catalog.Repositories;
+using Microsoft.AspNetCore.Mvc;
 
+namespace Catalog.Controllers
+{
 [ApiController]
 [Route("items")]
 public class ItemsController : ControllerBase
 {
-    private readonly InMenItemsRepository repository;
+    private readonly InMemItemsRepository repository;
 
     public ItemsController()
     {
-        repository = new InMenItemsRepository();
+        repository = new InMemItemsRepository();
     }
 
     [HttpGet]
@@ -18,3 +22,6 @@ public class ItemsController : ControllerBase
         return items;
     }
 }
+
+}
+
