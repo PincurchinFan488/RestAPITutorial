@@ -31,7 +31,7 @@ public class ItemsController : ControllerBase
     [HttpGet("{id}")]
     public ActionResult<ItemDto> GetItem(Guid id)
     {
-        var item = repository.GetItem(id).AsDto();
+        var item = repository.GetItem(id);
 
         if (item is null)
         {
