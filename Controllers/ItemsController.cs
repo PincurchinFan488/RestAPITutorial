@@ -23,7 +23,7 @@ public class ItemsController : ControllerBase
     [HttpGet]
     public IEnumerable<ItemDto> GetItems()
     {
-        var items = repository.GetItems().Select(items => items.AsDto());
+        var items = repository.GetItems().Select(item => item.AsDto());
         return items;
     }
 
