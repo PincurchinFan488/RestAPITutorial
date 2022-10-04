@@ -1,3 +1,6 @@
+using Catalog.Dtos;
+using Catalog.Entities;
+
 namespace Catalog
 {
     public static class Extensions
