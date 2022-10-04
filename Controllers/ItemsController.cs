@@ -1,6 +1,10 @@
-using Catalog.Entities;
-using Catalog.Repositories;
+using System;
+using System.Linq;
 using Microsoft.AspNetCore.Mvc;
+using Catalog.Repositories;
+using System.Collections.Generic;
+using Catalog.Entities;
+using Catalog.Dtos;
 
 namespace Catalog.Controllers
 {
@@ -34,7 +38,7 @@ public class ItemsController : ControllerBase
             return NotFound();
         }
 
-        return item.AsDto;
+        return item.AsDto();
     }
 }
 

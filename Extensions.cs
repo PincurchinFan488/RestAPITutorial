@@ -8,12 +8,12 @@ namespace Catalog
         public static ItemDto AsDto(this Item item)
         {
             return new ItemDto
-        {
-            Id = items.Id, 
-            Name = items.Name,
-            Price = items.Price,
-            CreatedDate = items.CreatedDate
-        });
+            {
+                Id = item.Id, 
+                Name = item.Name,
+                Price = item.Price,
+                CreatedDate = item.CreatedDate
+            };
         }
     }
 }

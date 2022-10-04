@@ -1,7 +1,10 @@
 using System;
+using System.Linq;
+using Microsoft.AspNetCore.Mvc;
+using Catalog.Repositories;
 using System.Collections.Generic;
 using Catalog.Entities;
-using System.Linq;
+using Catalog.Dtos;
 
 namespace Catalog.Repositories
 {
