@@ -40,6 +40,22 @@ public class ItemsController : ControllerBase
 
         return item.AsDto();
     }
+
+    //POst into items
+    [HttpPost]
+    public ActionResult<ItemDto> CreateItem(CreateItemDto itemDto)
+    {
+        Item item = new(){
+            Id = new Guid(),
+            Name = itemDto.Name,
+            Price = itemDto.Price,
+            CreatedDate = DateTimeOffset.UtcNow
+        };
+
+        repository.CreateItem(item);
+
+        return CreatedAtAction(nameof(GetItem), new {id = item.Id}, item.AsDto());
+    }
 }
 
 }
