@@ -19,13 +19,16 @@ builder.Services.AddControllers(options =>
 builder.Services.AddEndpointsApiExplorer();
 BsonSerializer.RegisterSerializer(new GuidSerializer(BsonType.String));
 BsonSerializer.RegisterSerializer(new DateTimeOffsetSerializer(BsonType.String));
+var mongoDbsettings = builder.Configuration.GetSection(nameof(MongoDbSettings)).Get<MongoDbSettings>();
 builder.Services.AddSingleton<IMongoClient>(ServiceProvider => 
 {
-    var settings = builder.Configuration.GetSection(nameof(MongoDbSettings)).Get<MongoDbSettings>();
-    return new MongoClient(settings.ConnectionString);
+    
+    return new MongoClient(mongoDbsettings.ConnectionString);
 });
 builder.Services.AddSingleton<IItemsRepository, MongoDbItemsRepository>();
 builder.Services.AddSwaggerGen();
+builder.Services.AddHealthChecks()
+    .AddMongoDb(mongoDbsettings.ConnectionString, name: "mongodb", timeout: TimeSpan.FromSeconds(3));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -33,6 +36,7 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+    app.UseHealthChecks("/health");
 }
 
 app.UseHttpsRedirection();
