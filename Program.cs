@@ -7,6 +7,7 @@ using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Serializers;
 using MongoDB.Driver;
+using System.Text.Json;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -42,9 +43,10 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
-    app.UseHealthChecks("/health/ready", new HealthCheckOptions{
+    app.UseHealthChecks("/health/ready", new HealthCheckOptions
+    {
         Predicate = (check) => check.Tags.Contains("ready"),
-        ResponseWriter = async(Context, Report) =>
+        ResponseWriter = async(context, report) =>
         {
             var result = JsonSerializer.Serialize(
                 new{
@@ -58,7 +60,8 @@ if (app.Environment.IsDevelopment())
                 }
             );
 
-            Context.Response.ContentType = MediaTypeNames.Application.Json;
+            context.Response.ContentType = MediaTypeNames.Application.Json;
+            await context.Response.WriteAsync(result);
         }
     });
     app.UseHealthChecks("/health/live", new HealthCheckOptions{
