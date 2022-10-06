@@ -1,6 +1,7 @@
 
 using Catalog.Repositories;
 using Catalog.Settings;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Serializers;
@@ -28,7 +29,11 @@ builder.Services.AddSingleton<IMongoClient>(ServiceProvider =>
 builder.Services.AddSingleton<IItemsRepository, MongoDbItemsRepository>();
 builder.Services.AddSwaggerGen();
 builder.Services.AddHealthChecks()
-    .AddMongoDb(mongoDbsettings.ConnectionString, name: "mongodb", timeout: TimeSpan.FromSeconds(3));
+    .AddMongoDb(
+        mongoDbsettings.ConnectionString, 
+        name: "mongodb", 
+        timeout: TimeSpan.FromSeconds(3),
+        tags: new[] {"ready"});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -36,7 +41,12 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
-    app.UseHealthChecks("/health");
+    app.UseHealthChecks("/health/ready", new HealthCheckOptions{
+        Predicate = (check) => check.Tags.Contains("ready")
+    });
+    app.UseHealthChecks("/health/live", new HealthCheckOptions{
+        Predicate = (_) => false
+    });
 }
 
 app.UseHttpsRedirection();
