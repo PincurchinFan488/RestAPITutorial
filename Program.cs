@@ -1,4 +1,5 @@
 
+using System.Net.Mime;
 using Catalog.Repositories;
 using Catalog.Settings;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
@@ -42,7 +43,23 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
     app.UseHealthChecks("/health/ready", new HealthCheckOptions{
-        Predicate = (check) => check.Tags.Contains("ready")
+        Predicate = (check) => check.Tags.Contains("ready"),
+        ResponseWriter = async(Context, Report) =>
+        {
+            var result = JsonSerializer.Serialize(
+                new{
+                    status = report.Status.ToString(),
+                    checks = report.Entries.Select(entry => new {
+                        name = entry.Key,
+                        status = entry.Value.Status.ToString(),
+                        exception = entry.Value.Exception != null ? entry.Value.Exception.Message : "none",
+                        duration = entry.Value.Duration.ToString()
+                    })
+                }
+            );
+
+            Context.Response.ContentType = MediaTypeNames.Application.Json;
+        }
     });
     app.UseHealthChecks("/health/live", new HealthCheckOptions{
         Predicate = (_) => false
