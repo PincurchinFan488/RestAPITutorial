@@ -1,11 +1,71 @@
 {
   "Version": 1,
-  "Hash": "ZsmjoMq/gEHgl6n1fo9lOlk/1FZ6ZGcDbTvHrZgjqcU=",
+  "Hash": "z2ZLc4o4aeW9x/42kK0bQf+pJDlW8rtpOZQVuawIosk=",
   "Source": "Catalog",
   "BasePath": "_content/Catalog",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
-  "Assets": []
+  "DiscoveryPatterns": [
+    {
+      "Name": "Catalog\\wwwroot",
+      "Source": "Catalog",
+      "ContentRoot": "C:\\Users\\Javier C\\Desktop\\Catalog\\RestAPITutorial\\wwwroot\\",
+      "BasePath": "_content/Catalog",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\Javier C\\Desktop\\Catalog\\RestAPITutorial\\wwwroot\\css\\site.css",
+      "SourceId": "Catalog",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Javier C\\Desktop\\Catalog\\RestAPITutorial\\wwwroot\\",
+      "BasePath": "_content/Catalog",
+      "RelativePath": "css/site.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\site.css"
+    },
+    {
+      "Identity": "C:\\Users\\Javier C\\Desktop\\Catalog\\RestAPITutorial\\wwwroot\\index.html",
+      "SourceId": "Catalog",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Javier C\\Desktop\\Catalog\\RestAPITutorial\\wwwroot\\",
+      "BasePath": "_content/Catalog",
+      "RelativePath": "index.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\index.html"
+    },
+    {
+      "Identity": "C:\\Users\\Javier C\\Desktop\\Catalog\\RestAPITutorial\\wwwroot\\js\\site.js",
+      "SourceId": "Catalog",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Javier C\\Desktop\\Catalog\\RestAPITutorial\\wwwroot\\",
+      "BasePath": "_content/Catalog",
+      "RelativePath": "js/site.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\site.js"
+    }
+  ]
 }

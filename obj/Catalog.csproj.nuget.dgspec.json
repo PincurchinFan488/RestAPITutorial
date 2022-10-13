@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Javier C\\Catalog\\Catalog.csproj": {}
+    "C:\\Users\\Javier C\\Desktop\\Catalog\\RestAPITutorial\\Catalog.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Javier C\\Catalog\\Catalog.csproj": {
+    "C:\\Users\\Javier C\\Desktop\\Catalog\\RestAPITutorial\\Catalog.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Javier C\\Catalog\\Catalog.csproj",
+        "projectUniqueName": "C:\\Users\\Javier C\\Desktop\\Catalog\\RestAPITutorial\\Catalog.csproj",
         "projectName": "Catalog",
-        "projectPath": "C:\\Users\\Javier C\\Catalog\\Catalog.csproj",
+        "projectPath": "C:\\Users\\Javier C\\Desktop\\Catalog\\RestAPITutorial\\Catalog.csproj",
         "packagesPath": "C:\\Users\\Javier C\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Javier C\\Catalog\\obj\\",
+        "outputPath": "C:\\Users\\Javier C\\Desktop\\Catalog\\RestAPITutorial\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Javier C\\AppData\\Roaming\\NuGet\\NuGet.Config",
