@@ -49,7 +49,9 @@ public class ItemsController : ControllerBase
             Id = new Guid(),
             Name = itemDto.Name,
             Price = itemDto.Price,
-            CreatedDate = DateTimeOffset.UtcNow
+            CreatedDate = DateTimeOffset.UtcNow,
+            isEndagered = itemDto.isEndagered
+
         };
 
         await repository.CreateItemAsync(item);
@@ -70,7 +72,8 @@ public class ItemsController : ControllerBase
 
         Item updatedItem = existingItem with {
             Name = itemDto.Name,
-            Price = itemDto.Price
+            Price = itemDto.Price,
+            isEndagered = itemDto.isEndagered
             
         };
 

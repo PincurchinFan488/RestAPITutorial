@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -6,29 +6,14 @@
     <link rel="stylesheet" href="css/site.css" />
 </head>
 <body>
-    <h1>Catalog</h1>
-    <h3>Add</h3>
+    <h1>Add a Insect</h1>
+    <h3>Add your Favorite Insect</h3>
     <form action="javascript:void(0);" method="POST" onsubmit="addItem()">
-        <input type="text" id="add-name" placeholder="Name">
-        <input type="text" id="add-price" placeholder="Price">
+        <input type="text" id="add-name" placeholder="Insect Name">
+        <input type="text" id="add-price" placeholder="Number of Legs">
         <input type="submit" value="Add">
     </form>
 
-    <!--
-        div: {
-            atrributes: [ id: "editForm", class: "hello" ],
-            children: [ h3: {}, form: {} ]
-        }
-
-
-        h3: {
-            attributes: "",
-            chlidren
-        }
-
-        div.children[0]
-        div.attributes[0]
-     -->
     <div id="editForm" class="hello">
         <h3>Edit</h3>
         <form action="javascript:void(0);" onsubmit="updateItem()">
@@ -44,8 +29,63 @@
 
     <table>
         <tr>
-            <th>Name</th>
-            <th>Price</th>
+            <th>Insect Name</th>
+            <th>Number Of Legs</th>
+            <th></th>
+            <th></th>
+        </tr>
+        <tbody id="todos"></tbody>
+    </table>
+
+    <script src="js/site.js" asp-append-version="true"></script>
+    <script type="text/javascript">
+        getItems();
+    </script>
+</body>
+</html>
+-->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Find a Insect</title>
+    <link rel="stylesheet" href="css/site.css" />
+</head>
+<body>
+    <h1>Find an Insect</h1>
+    <h3>Add a Insect</h3>
+    <form action="javascript:void(0);" method="POST" onsubmit="addItem()">
+        <input type="text" id="add-name" placeholder="Insect Name">
+        <input type="text" id="add-price" placeholder="Number of Legs">
+        <select name="add-isEndagered" id="add-isEndagered">
+            <option value="true">Is Endagered</option>
+            <option value="false">Is NOT Endagered</option>
+          </select>
+        <input type="submit" value="Add">
+    </form>
+
+    <div id="editForm" class="hello">
+        <h3>Edit</h3>
+        <form action="javascript:void(0);" onsubmit="updateItem()">
+            <input type="hidden" id="edit-id">
+            <input type="text" id="edit-name">
+            <input type="text" id="edit-price">
+            <select name="edit-isEndagered" id="edit-isEndagered">
+                <option value="true">Is Endagered</option>
+                <option value="false">Is NOT Endagered</option>
+              </select>
+            <input type="submit" value="Save">
+            <a onclick="closeInput()" aria-label="Close">&#10006;</a>
+        </form>
+    </div>
+
+    <p id="counter"> </p>
+
+    <table>
+        <tr>
+            <th>Insect Name</th>
+            <th>Number of Legs</th>
+            <th>Is Endagered</th>
             <th></th>
             <th></th>
         </tr>

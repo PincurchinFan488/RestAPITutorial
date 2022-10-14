@@ -12,10 +12,12 @@ function getItems() {
 function addItem() {
   const addNameTextbox = document.getElementById('add-name');
   const addPriceTextbox = document.getElementById('add-price');
+  const addisEndageredTextbox = document.getElementById('add-isEndagered');
 
   const item = {
     name: addNameTextbox.value.trim(),
     price: addPriceTextbox.value,
+    isEndagered: addisEndageredTextbox.value.trim(),
 
   };
 
@@ -32,6 +34,7 @@ function addItem() {
       getItems();
       addNameTextbox.value = '';
       addPriceTextbox.value = '';
+      addisEndageredTextbox.value = '';
 
     })
     .catch(error => console.error('Unable to add item.', error));
@@ -60,6 +63,7 @@ function displayEditForm(event) {
 
   document.getElementById('edit-name').value = item.name;
   document.getElementById('edit-price').value = item.price;
+  document.getElementById('edit-isEndagered').value = item.is;
   document.getElementById('edit-id').value = item.id;
   document.getElementById('editForm').style.display = 'block';
 }
@@ -69,7 +73,8 @@ function updateItem() {
   const item = {
     id: parseInt(itemId, 10),
     name: document.getElementById('edit-name').value.trim(),
-    price: document.getElementById('edit-price').value
+    price: document.getElementById('edit-price').value,
+    isEndagered: document.getElementById('edit-isEndagered').value
   };
   fetch(`${uri}/${itemId}`, {
     method: 'PUT',
@@ -145,10 +150,14 @@ function _displayItems(data) {
     td2.appendChild(priceNode);
 
     let td3 = tr.insertCell(2);
-    td3.appendChild(editButton);
+    let isEndNode = document.createTextNode(item.isEndagered);
+    td3.appendChild(isEndNode);
 
     let td4 = tr.insertCell(3);
-    td4.appendChild(deleteButton);
+    td4.appendChild(editButton);
+
+    let td5 = tr.insertCell(4);
+    td5.appendChild(deleteButton);
   });
 
   todos = data;
